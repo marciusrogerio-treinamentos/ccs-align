@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            margin-right: 10px;
+            width: 80px;
+            border-radius: 16px;
+            text-align: center; 
+
+        }        
+        #box1 {
+            background-color: yellow;
+
+        }
+        #box2 {
+            background-color: cyan;
+        }
+        #box3 {
+            background-color: blueviolet;
+            color: aliceblue;
+        }
+
+        .boxg {
+            margin-right: 10px;
+            width: 80px;
+            border-radius: 16px;
+            text-align: center;             
+            background-color:burlywood;
+        }
+
+        #container {
+            display: flex;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid black;
+            height: 500px;
+            border-radius: 25px;
+        }
+
+        #btncontainer {
+            display: flex;
+            margin: 20px;            
+        }
+
+        .btngrp {
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 20px;
+            margin-right: 20px;
+        }
+
+
+        .flexstart {
+            align-items: flex-start;
+        }
+        .flexend {
+            align-items: flex-end;
+        }
+        .flexcenter {
+            align-items: center;
+        }
+        .flexstretch {
+            align-items: stretch;
+        }
+
+        .jflexstart {
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+
+        .jflexend {
+            align-items: flex-start;
+            justify-content: flex-end;
+        }
+
+        .jflexcenter {
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .jflexspacebetween {
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        .jflexspacearound {
+            align-items: flex-start;
+            justify-content: space-around;
+        }
+
+        .jflexspaceevenly {
+            align-items: flex-start;
+            justify-content: space-evenly;
+        }
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <input type="text" name="" id="counter" value="3" hidden>
+    <div id="container" class="flexstart">
+        <div class="box" id="box1">1</div>
+        <div class="box" id="box2">2</div>
+        <div class="box" id="box3">3</div>
+    </div>
+    <div id="btncontainer">
+        <div class="btngrp">
+            <button onclick="flexstart()">Flex Start</button><br><br>
+            <button onclick="flexend()">Flex End</button><br><br>
+            <button onclick="flexcenter()">Center</button><br><br>
+            <button onclick="flexstretch()">Stretch</button><br><br>
+        </div>
+        <div class="btngrp">
+            <button onclick="jflexstart()">Flex Start</button><br><br>
+            <button onclick="jflexend()">Flex End</button><br><br>
+            <button onclick="jflexcenter()">Center</button><br><br>
+            <button onclick="jflexspacebetween()">Space Between</button><br><br>
+            <button onclick="jflexspacearound()">Space Around</button><br><br>
+            <button onclick="jflexspaceevenly()">Space Evenly</button><br><br>
+        </div>
+        <div class="btngrp">
+            <button onclick="addElement()">Add Element</button><br><br>
+            <button onclick="removeLastEl()">Remove Last Element</button><br><br>
+        </div>
+    </div>
+
+
+
+    <script>
+        const containerEl = document.getElementById('container')
+
+        function addElement() {
+            const counter = document.getElementById('counter')
+            const number = parseInt(counter.value) + 1
+            counter.value = number
+            const newBox = document.createElement("div")
+            newBox.setAttribute('class','boxg')
+            newBox.setAttribute('id','box'+number.toString())
+            const idBox = document.createTextNode(number)
+            newBox.appendChild(idBox)
+            containerEl.appendChild(newBox)           
+        }
+
+        function removeLastEl() {
+            const counter = document.getElementById('counter')
+            const number = parseInt(counter.value) 
+            if(number > 0) {
+                counter.value = parseInt(counter.value) - 1
+                const elToRemove = document.getElementById('box'+number.toString())
+                if(elToRemove.parentNode) {
+                    elToRemove.parentNode.removeChild(elToRemove)
+                }      
+            }
+
+
+        }
+
+        function flexstart() {
+            containerEl.removeAttribute('class')
+            containerEl.setAttribute('class','flexstart')
+        }
+
+        function flexend() {
+            containerEl.removeAttribute('class')
+            containerEl.setAttribute('class','flexend')
+        }
+
+        function flexcenter() {
+            containerEl.removeAttribute('class')
+            containerEl.setAttribute('class','flexcenter')
+        }
+
+        function flexstretch() {
+            containerEl.removeAttribute('class')
+            containerEl.setAttribute('class','flexstretch')
+        }
+
+        function jflexstart() {
+            containerEl.removeAttribute('class')
+            containerEl.setAttribute('class','jflexstart')
+        }
+
+        function jflexend() {
+            containerEl.removeAttribute('class')
+            containerEl.setAttribute('class','jflexend')
+        }
+
+        function jflexcenter() {
+            containerEl.removeAttribute('class')
+            containerEl.setAttribute('class','jflexcenter')
+        }
+
+        function jflexspacebetween() {
+            containerEl.removeAttribute('class')
+            containerEl.setAttribute('class','jflexspacebetween')
+        }
+
+        function jflexspacearound() {
+            containerEl.removeAttribute('class')
+            containerEl.setAttribute('class','jflexspacearound')
+        }
+
+        function jflexspaceevenly() {
+            containerEl.removeAttribute('class')
+            containerEl.setAttribute('class','jflexspaceevenly')
+        }
+
+
+
+
+    </script>
+</body>
+</html>
